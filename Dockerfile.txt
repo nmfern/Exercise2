@@ -1,0 +1,7 @@
+FROM python:3
+
+WORKDIR /usr/src/scanner
+
+COPY ./scanner.py /usr/src/scanner/scanner.py
+
+ENTRYPOINT ["python3", "./scanner.py"]

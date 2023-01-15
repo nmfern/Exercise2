@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: scanner
+  namespace: default
+spec:
+  schedule: "5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: scanner
+            image: nmfern/ports_scanner:1.0
+            imagePullPolicy: IfNotPresent
+            args: ["127.0.0.1"]
+          restartPolicy: OnFailure
